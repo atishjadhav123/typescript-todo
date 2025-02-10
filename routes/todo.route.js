@@ -12,4 +12,4 @@ router
     .post("/createtodo", todo_controller_1.createTodos)
     .put("/updatetodo/:id", upload_1.upload, todo_controller_1.updateTodo)
     .delete("/deletetodo/:id", todo_controller_1.deleteTodos);
-exports.default = router;
+exports.default = router
