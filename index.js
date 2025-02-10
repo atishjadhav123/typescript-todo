@@ -29,10 +29,10 @@ if (!MONGO_URL) {
 }
 mongoose_1.default.connect(MONGO_URL)
     .then(() => {
-    console.log("MongoDB connected");
-    app.listen(PORT, () => console.log(`Server running  ${PORT}`));
-})
+        console.log("MongoDB connected");
+        app.listen(PORT, () => console.log(`Server running  ${PORT}`));
+    })
     .catch((error) => {
-    console.error("MongoDB connection error", error);
-    process.exit(1);
-});
+        console.error("MongoDB connection error", error);
+        process.exit(1);
+    });
