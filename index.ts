@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import todoRoutes from './routes/todo.route'
+import path from 'path'
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.use(express.static("dist"))
 app.use(cors({ origin: "http://localhost:5173", credentials: true }))
 
 app.use("/api/todo", todoRoutes)
@@ -18,6 +20,9 @@ app.use("/api/todo", todoRoutes)
 app.use("*", (req: Request, res: Response) => {
     res.status(400).json({ message: "Route not found" })
 })
+app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"))
+});
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.log(err)
